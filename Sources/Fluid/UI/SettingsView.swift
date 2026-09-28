@@ -1064,23 +1064,38 @@ struct SettingsView: View {
                             Divider().opacity(0.2)
 
                             self.settingsToggleRow(
-                                title: "Space Between Dictations",
-                                description: "Add spacing when consecutive dictations are joined.",
+                                title: "Continuous Dictation Mode",
+                                description: "Keep typing between consecutive dictations. Enables spacing and capitalization that adapt to the text before the cursor.",
                                 isOn: Binding(
-                                    get: { self.settings.continuousDictationSpacingEnabled },
-                                    set: { self.settings.continuousDictationSpacingEnabled = $0 }
+                                    get: { self.settings.continuousDictationModeEnabled },
+                                    set: { self.settings.continuousDictationModeEnabled = $0 }
                                 )
                             )
-                            Divider().opacity(0.2)
+                            .settingsSearchTarget(.continuousDictationMode)
 
-                            self.settingsToggleRow(
-                                title: "Smart Capitalization",
-                                description: "Use text before the cursor to choose uppercase or lowercase.",
-                                isOn: Binding(
-                                    get: { self.settings.contextAwareCapitalizationEnabled },
-                                    set: { self.settings.contextAwareCapitalizationEnabled = $0 }
+                            if self.settings.continuousDictationModeEnabled {
+                                Divider().opacity(0.2)
+
+                                self.settingsToggleRow(
+                                    title: "Space Between Dictations",
+                                    description: "Add spacing when consecutive dictations are joined.",
+                                    isOn: Binding(
+                                        get: { self.settings.continuousDictationSpacingEnabled },
+                                        set: { self.settings.continuousDictationSpacingEnabled = $0 }
+                                    )
                                 )
-                            )
+
+                                Divider().opacity(0.2)
+
+                                self.settingsToggleRow(
+                                    title: "Smart Capitalization",
+                                    description: "Use text before the cursor to choose uppercase or lowercase.",
+                                    isOn: Binding(
+                                        get: { self.settings.contextAwareCapitalizationEnabled },
+                                        set: { self.settings.contextAwareCapitalizationEnabled = $0 }
+                                    )
+                                )
+                            }
                         }
                     }
                     .padding(16)
