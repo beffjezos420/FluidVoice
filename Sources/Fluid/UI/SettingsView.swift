@@ -1034,23 +1034,37 @@ struct SettingsView: View {
 
                         VStack(spacing: 16) {
                             self.settingsToggleRow(
-                                title: "Lowercase First Letter",
-                                description: "Start each transcription with a lowercase letter.",
+                                title: "Formatting Cleanup",
+                                description: "Auto-format transcriptions by removing auto-capitalization and trailing periods.",
                                 isOn: Binding(
-                                    get: { self.settings.gaavLowercaseFirstLetterEnabled },
-                                    set: { self.settings.gaavLowercaseFirstLetterEnabled = $0 }
+                                    get: { self.settings.gaavModeEnabled },
+                                    set: { self.settings.gaavModeEnabled = $0 }
                                 )
                             )
-                            Divider().opacity(0.2)
+                            .settingsSearchTarget(.formattingCleanup)
 
-                            self.settingsToggleRow(
-                                title: "Remove Trailing Period",
-                                description: "Drop a final period from transcriptions.",
-                                isOn: Binding(
-                                    get: { self.settings.gaavRemoveTrailingPeriodEnabled },
-                                    set: { self.settings.gaavRemoveTrailingPeriodEnabled = $0 }
+                            if self.settings.gaavModeEnabled {
+                                Divider().opacity(0.2)
+
+                                self.settingsToggleRow(
+                                    title: "Lowercase First Letter",
+                                    description: "Start each transcription with a lowercase letter.",
+                                    isOn: Binding(
+                                        get: { self.settings.gaavLowercaseFirstLetterEnabled },
+                                        set: { self.settings.gaavLowercaseFirstLetterEnabled = $0 }
+                                    )
                                 )
-                            )
+                                Divider().opacity(0.2)
+
+                                self.settingsToggleRow(
+                                    title: "Remove Trailing Period",
+                                    description: "Drop a final period from transcriptions.",
+                                    isOn: Binding(
+                                        get: { self.settings.gaavRemoveTrailingPeriodEnabled },
+                                        set: { self.settings.gaavRemoveTrailingPeriodEnabled = $0 }
+                                    )
+                                )
+                            }
                             Divider().opacity(0.2)
 
                             self.settingsToggleRow(
