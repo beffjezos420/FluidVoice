@@ -44,6 +44,7 @@ enum SettingsSearchTarget: Hashable {
     case spokenFormatting
     case fillerWords
     case continuousDictationMode
+    case formattingCleanup
 
     case notifications
     case aiEnhancementFailures
@@ -100,7 +101,7 @@ enum SettingsSearchTarget: Hashable {
              .accessibilityPermission:
             return .dictation
 
-        case .textFormatting, .spokenFormatting, .fillerWords, .continuousDictationMode:
+        case .textFormatting, .spokenFormatting, .fillerWords, .continuousDictationMode, .formattingCleanup:
             return .dictationFormatting
 
         case .shortcuts, .globalHotkey, .primaryDictationShortcuts,
@@ -353,6 +354,11 @@ enum SettingsSearchIndex {
             target: .continuousDictationMode,
             title: "Continuous Dictation Mode",
             terms: ["consecutive dictations join merge spacing context capitalization keep typing mode"]
+        ),
+        .init(
+            target: .formattingCleanup,
+            title: "Formatting Cleanup",
+            terms: ["auto format lowercase first letter remove trailing period capitalization punctuation cleanup clean"]
         ),
         .init(target: .notifications, title: "Notifications", terms: ["alerts warnings"]),
         .init(
