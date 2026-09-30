@@ -1068,6 +1068,17 @@ struct SettingsView: View {
                             Divider().opacity(0.2)
 
                             self.settingsToggleRow(
+                                title: "Spoken Punctuation",
+                                description: "Convert spoken words like “comma”, “period”, and “question mark” into punctuation symbols.",
+                                isOn: Binding(
+                                    get: { self.settings.autoConvertPunctuationEnabled },
+                                    set: { self.settings.autoConvertPunctuationEnabled = $0 }
+                                )
+                            )
+                            .settingsSearchTarget(.spokenPunctuation)
+                            Divider().opacity(0.2)
+
+                            self.settingsToggleRow(
                                 title: "Slash Commands & @ Formatting",
                                 description: "Convert spoken slash commands and supported @ mentions into symbols.",
                                 isOn: Binding(
