@@ -4657,6 +4657,7 @@ final class SettingsStore: ObservableObject {
         PunctuationDictionaryRule(aliases: ["tilde"], symbol: "~"),
         PunctuationDictionaryRule(aliases: ["caret"], symbol: "^"),
         PunctuationDictionaryRule(aliases: ["backtick", "back tick"], symbol: "`"),
+        PunctuationDictionaryRule(aliases: ["bullet", "bullet point"], symbol: "•"),
     ]
 
     struct PunctuationDictionaryRule: Codable, Identifiable, Hashable {

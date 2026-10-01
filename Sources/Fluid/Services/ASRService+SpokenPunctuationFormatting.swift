@@ -221,7 +221,7 @@ private enum SpokenPunctuationFormatter {
             return .rightAttached
         case "(", "[", "{", "<", "$":
             return .leftAttached
-        case "+", "=", "&", "—", "–":
+        case "+", "=", "&", "—", "–", "•":
             return .spaceAround
         case "-":
             return aliases.contains("dash") || aliases.contains("minus sign") ? .spaceAround : .noSpaceAround
